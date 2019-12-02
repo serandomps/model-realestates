@@ -1,0 +1,63 @@
+{
+    "name": "realestates-model",
+    "description": "realestates-model component",
+    "scripts": [
+        "index.js",
+        "create/index.js",
+        "featured/index.js",
+        "filter/index.js",
+        "find/index.js",
+        "findone/index.js",
+        "mine/index.js",
+        "recent/index.js",
+        "remove/index.js",
+        "search/index.js",
+        "service/index.js"
+    ],
+    "styles": [
+        "styles.css",
+        "create/styles.css",
+        "featured/styles.css",
+        "filter/styles.css",
+        "find/styles.css",
+        "findone/styles.css",
+        "mine/styles.css",
+        "recent/styles.css",
+        "search/styles.css"
+    ],
+    "templates": [
+        "create/template.html",
+        "filter/template.html",
+        "find/template.html",
+        "find/annex.html",
+        "find/apartment.html",
+        "find/building.html",
+        "find/house.html",
+        "find/land.html",
+        "find/room.html",
+        "findone/template.html",
+        "findone/actions.html",
+        "findone/status.html",
+        "findone/details.html",
+        "findone/annex.html",
+        "findone/apartment.html",
+        "findone/building.html",
+        "findone/house.html",
+        "findone/land.html",
+        "findone/room.html",
+        "remove/template.html"
+    ],
+    "main": "index.js",
+    "dependencies": {
+        "serandomps/serand": "master",
+        "serandomps/utils": "master",
+        "serandomps/dust": "master",
+        "serandomps/user": "master",
+        "serandomps/form": "master",
+        "serandomps/gallery": "master",
+        "serandomps/locations": "master",
+        "serandomps/contacts": "master",
+        "serandomps/service-binaries": "master",
+        "serandomps/vehicle-makes": "master"
+    }
+}

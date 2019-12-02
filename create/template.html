@@ -1,0 +1,22 @@
+<h1 class="title text-center text-muted">{?id}{title}{:else}Create your Real Estate{/id}</h1>
+<form role="form">
+    {@steps}
+        {@step name="realestate" title="Vehicle" icon="fas fa-2x fa-car" active="true" back=_.back}
+            {@blocks block="select" id=_.container name="type" label="Type" title="Type" options=_.types search="true" size="10" icon="fas fa-tag"/}
+            {@blocks block="radios" id=_.container name="offer" value=offer options=_.offer label="Offer" icon="fas fa-shopping-cart"/}
+            {@blocks block="checkboxes" id=_.container name="usage" value=usage options=_.usage label="Usage" icon="fas fa-building"/}
+            {@blocks block="text" id=_.container name="title" value=title help="Title (optional)" label="Title" icon="fas fa-heading"/}
+            {@blocks block="text" id=_.container name="extent" help="Extent (perch)" value=extent label="Extent" icon="fas fa-arrows-alt-h"/}
+            {@blocks block="text" id=_.container name="area" help="Area (sq ft)" value=area label="Area" icon="fas fa-square"/}
+            {@blocks block="text" id=_.container name="floors" help="Floors" value=floors label="Floors" icon="fas fa-bars"/}
+            {@blocks block="text" id=_.container name="bedrooms" help="Bedrooms" value=bedrooms label="Bedrooms" icon="fas fa-bed"/}
+            {@blocks block="text" id=_.container name="bathrooms" help="Bathrooms" value=bathrooms label="Bathrooms" icon="fas fa-restroom"/}
+            {@blocks block="text" id=_.container name="parking" help="Slots" value=parking label="Parking Slots" icon="fas fa-parking"/}
+            {@blocks block="text" id=_.container name="price" help="Price (LKR)" value=price label="Price" icon="fas fa-money-check-alt"/}
+            {@blocks block="textarea" id=_.container name="description" help="Description (optional)" rows=6 value=description label="Description" icon="fas fa-align-left"/}
+            {@blocks block="uploads" id=_.container name="images" help="Photos" value=_.images size=3 label="Photos" icon="fa-images"/}
+        {/step}
+        {@step name="location" title="Location" icon="fas fa-2x fa-map-marker-alt"}{/step}
+        {@step name="contact" title="Contacts" icon="fas fa-2x fa-mobile-alt"}{/step}
+    {/steps}
+</form>

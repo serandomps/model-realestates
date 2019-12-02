@@ -1,0 +1,99 @@
+<div class="row mt-4">
+    <div class="col-md mb-3">
+        <div class="media">
+            <span class="btn rounded-circle mr-2">
+              <span class="fas fa-bed fa-fw fa-2x text-dark"></span>
+            </span>
+            <div class="media-body">
+                <h4 class="h6 text-secondary mb-0 mt-0 font-weight-bold">Bedrooms</h4>
+                <span class="h5 text-capitalize font-weight-bold text-primary">{bedrooms}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md mb-3">
+        <div class="media">
+            <span class="btn rounded-circle mr-2">
+              <span class="fas fa-restroom fa-fw fa-2x text-dark"></span>
+            </span>
+            <div class="media-body">
+                <h4 class="h6 text-secondary mb-0 mt-0 font-weight-bold">Bathrooms</h4>
+                <span class="h5 text-capitalize font-weight-bold text-primary">{bathrooms}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md mb-3">
+        <div class="media">
+            <span class="btn rounded-circle mr-2">
+              <span class="fas fa-square fa-fw fa-2x text-dark"></span>
+            </span>
+            <div class="media-body">
+                <h4 class="h6 text-secondary mb-0 mt-0 font-weight-bold">Area</h4>
+                <span class="h5 text-capitalize font-weight-bold text-primary mr-1">{area}</span>
+                <small class="text-muted">ft<sup>2</sup></small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md mb-3">
+        <div class="media">
+            <span class="btn rounded-circle mr-2">
+              <span class="fas fa-money-check-alt fa-fw fa-2x text-dark"></span>
+            </span>
+            <div class="media-body">
+                <h4 class="h6 text-secondary mb-0 mt-0 font-weight-bold">Price</h4>
+                <span class="h5 text-capitalize font-weight-bold text-primary mr-1">{price}</span>
+                <small class="text-muted">LKR</small>
+            </div>
+        </div>
+    </div>
+</div>
+<hr/>
+<div class="row mt-4">
+    <div class="col-md-3 mb-4">
+        <div class="media">
+            <span class="btn rounded-circle mr-2">
+              <span class="fas fa-bars fa-fw text-dark"></span>
+            </span>
+            <div class="media-body">
+                <h4 class="h6 text-secondary mb-0 mt-0">Floors</h4>
+                <span class="text-capitalize font-weight-bold">{floors}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="media">
+            <span class="btn rounded-circle mr-2">
+              <span class="fas fa-parking fa-fw text-dark"></span>
+            </span>
+            <div class="media-body">
+                <h4 class="h6 text-secondary mb-0 mt-0">Parking</h4>
+                <span class="text-capitalize font-weight-bold">{parking}</span>
+            </div>
+        </div>
+    </div>
+    {?residential}
+    <div class="col-md-3 mb-4">
+        <div class="media">
+            <span class="btn rounded-circle mr-2">
+              <span class="fas fa-home fa-fw text-dark"></span>
+            </span>
+            <div class="media-body">
+                <h4 class="h6 text-secondary mb-0 mt-0">Residential</h4>
+                <span class="text-capitalize font-weight-bold">Yes</span>
+            </div>
+        </div>
+    </div>
+    {/residential}
+    {?commercial}
+    <div class="col-md-3 mb-4">
+        <div class="media">
+            <span class="btn rounded-circle mr-2">
+              <span class="fas fa-building fa-fw text-dark"></span>
+            </span>
+            <div class="media-body">
+                <h4 class="h6 text-secondary mb-0 mt-0">Commercial</h4>
+                <span class="text-capitalize font-weight-bold">Yes</span>
+            </div>
+        </div>
+    </div>
+    {/commercial}
+</div>

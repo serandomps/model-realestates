@@ -1,0 +1,15 @@
+.sandbox-realestates-model-findone .blueimp-gallery-carousel {
+    margin-top: 0;
+}
+
+.sandbox-realestates-model-findone .blueimp-gallery > .indicator > li {
+    width: 40px;
+    height: 40px;
+}
+
+.sandbox-realestates-model-findone .btn.status,
+.sandbox-realestates-model-findone .btn.edit,
+.sandbox-realestates-model-findone .btn.cancel,
+.sandbox-realestates-model-findone .btn-group {
+
+}

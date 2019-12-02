@@ -1,0 +1,48 @@
+.sandbox-realestates-model-filter .price label {
+    margin-bottom: 4px;
+}
+
+.sandbox-realestates-model-filter .form-control {
+    margin-bottom: 10px;
+}
+
+.sandbox-realestates-model-filter .user .avatar {
+    font-size: 1rem;
+    width: 75px;
+    height: 75px;
+}
+
+.sandbox-realestates-model-filter .user div.avatar {
+    padding-top: 25px;
+}
+.sandbox-realestates-model-filter .manufacturedAt-gte {
+    margin-bottom: 0.5rem!important;
+}
+
+.sandbox-realestates-model-filter .price-gte {
+    margin-bottom: 0.5rem!important;
+}
+
+.sandbox-realestates-model-filter .extent-gte {
+    margin-bottom: 0.5rem!important;
+}
+
+.sandbox-realestates-model-filter .area-gte {
+    margin-bottom: 0.5rem!important;
+}
+
+.sandbox-realestates-model-filter .bedrooms-gte {
+    margin-bottom: 0.5rem!important;
+}
+
+.sandbox-realestates-model-filter .bathrooms-gte {
+    margin-bottom: 0.5rem!important;
+}
+
+.sandbox-realestates-model-filter .floors-gte {
+    margin-bottom: 0.5rem!important;
+}
+
+.sandbox-realestates-model-filter .parking-gte {
+    margin-bottom: 0.5rem!important;
+}

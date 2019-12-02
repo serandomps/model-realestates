@@ -1,0 +1,39 @@
+.sandbox-realestates-model-create h1.title {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.sandbox-realestates-model-create .form-control1 {
+    margin-bottom: 10px;
+}
+
+.sandbox-realestates-model-create .control-label {
+    margin-bottom: 4px;
+}
+
+.sandbox-realestates-model-create .fileinput-button {
+    margin-bottom: 10px;
+}
+
+.sandbox-realestates-model-create .files .filename {
+    overflow: hidden;
+}
+
+.sandbox-realestates-model-create .files .info {
+    margin-bottom: 2px;
+}
+
+.sandbox-realestates-model-create .files .thumbnail {
+    text-align: center;
+}
+
+.sandbox-realestates-model-create .btn.next {
+    margin-right: 5px;
+}
+
+.sandbox-realestates-model-create .remove-file {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: #d9534f;
+}
