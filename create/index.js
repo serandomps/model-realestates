@@ -2,11 +2,11 @@ var dust = require('dust')();
 var serand = require('serand');
 var utils = require('utils');
 var form = require('form');
-var locations = require('locations');
-var contacts = require('contacts');
+var locations = require('model-locations');
+var contacts = require('model-contacts');
 var RealEstate = require('../service');
 
-dust.loadSource(dust.compile(require('./template'), 'realestates-model-create'));
+dust.loadSource(dust.compile(require('./template'), 'model-realestates-create'));
 
 var resolution = '288x162';
 
@@ -393,7 +393,7 @@ var render = function (ctx, container, data, done) {
         {label: 'Residential', value: 'residential'}
     ];
     data._.back = '/realestates' + (id ? '/' + id : '');
-    dust.render('realestates-model-create', data, function (err, out) {
+    dust.render('model-realestates-create', data, function (err, out) {
         if (err) {
             return done(err);
         }
@@ -490,7 +490,7 @@ var render = function (ctx, container, data, done) {
                         });
                         done(null, {
                             clean: function () {
-                                $('.realestates-model-create', sandbox).remove();
+                                $('.model-realestates-create', sandbox).remove();
                             },
                             ready: function () {
                                 realEstateForm.ready(ctx, function (err) {

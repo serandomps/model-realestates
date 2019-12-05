@@ -4,7 +4,7 @@ var utils = require('utils');
 var RealEstate = require('../service');
 var user = require('user');
 
-var locations = require('locations');
+var locations = require('model-locations');
 var Locations = locations.service;
 
 var recent = require('../recent');
@@ -13,16 +13,16 @@ var redirect = serand.redirect;
 
 var token;
 
-dust.loadSource(dust.compile(require('./template'), 'realestates-model-findone'));
-dust.loadSource(dust.compile(require('./actions'), 'realestates-model-findone-actions'));
-dust.loadSource(dust.compile(require('./status'), 'realestates-model-findone-status'));
-dust.loadSource(dust.compile(require('./details'), 'realestates-model-findone-details'));
-dust.loadSource(dust.compile(require('./annex'), 'realestates-model-findone-annex'));
-dust.loadSource(dust.compile(require('./apartment'), 'realestates-model-findone-apartment'));
-dust.loadSource(dust.compile(require('./building'), 'realestates-model-findone-building'));
-dust.loadSource(dust.compile(require('./house'), 'realestates-model-findone-house'));
-dust.loadSource(dust.compile(require('./land'), 'realestates-model-findone-land'));
-dust.loadSource(dust.compile(require('./room'), 'realestates-model-findone-room'));
+dust.loadSource(dust.compile(require('./template'), 'model-realestates-findone'));
+dust.loadSource(dust.compile(require('./actions'), 'model-realestates-findone-actions'));
+dust.loadSource(dust.compile(require('./status'), 'model-realestates-findone-status'));
+dust.loadSource(dust.compile(require('./details'), 'model-realestates-findone-details'));
+dust.loadSource(dust.compile(require('./annex'), 'model-realestates-findone-annex'));
+dust.loadSource(dust.compile(require('./apartment'), 'model-realestates-findone-apartment'));
+dust.loadSource(dust.compile(require('./building'), 'model-realestates-findone-building'));
+dust.loadSource(dust.compile(require('./house'), 'model-realestates-findone-house'));
+dust.loadSource(dust.compile(require('./land'), 'model-realestates-findone-land'));
+dust.loadSource(dust.compile(require('./room'), 'model-realestates-findone-room'));
 
 var findLocation = function (id, done) {
     $.ajax({
@@ -99,7 +99,7 @@ module.exports = function (ctx, container, options, done) {
                 });
                 realEstate._.status = status.length ? status : null;
                 realEstate._.editing = (realEstate.status === 'editing');
-                dust.render('realestates-model-findone', serand.pack(realEstate, container), function (err, out) {
+                dust.render('model-realestates-findone', serand.pack(realEstate, container), function (err, out) {
                     if (err) {
                         return done(err);
                     }
@@ -147,7 +147,7 @@ module.exports = function (ctx, container, options, done) {
                             });
                             done(null, {
                                 clean: function () {
-                                    $('.realestates-model-findone', sandbox).remove();
+                                    $('.model-realestates-findone', sandbox).remove();
                                 },
                                 ready: function () {
                                     var i;

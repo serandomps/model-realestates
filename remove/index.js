@@ -3,13 +3,13 @@ var serand = require('serand');
 var utils = require('utils');
 var Vehicle = require('../service');
 
-dust.loadSource(dust.compile(require('./template'), 'realestates-model-remove'));
+dust.loadSource(dust.compile(require('./template'), 'model-realestates-remove'));
 
 module.exports = function (ctx, container, options, done) {
     var sandbox = container.sandbox;
     Vehicle.findOne({id: options.id, resolution: '800x450'}, function (err, vehicle) {
         if (err) return done(err);
-        dust.render('realestates-model-remove', serand.pack(vehicle, container), function (err, out) {
+        dust.render('model-realestates-remove', serand.pack(vehicle, container), function (err, out) {
             if (err) {
                 return done(err);
             }
@@ -24,7 +24,7 @@ module.exports = function (ctx, container, options, done) {
             });
             done(null, {
                 clean: function () {
-                    $('.realestates-model-remove', sandbox).remove();
+                    $('.model-realestates-remove', sandbox).remove();
                 },
                 ready: function () {
                     var i;

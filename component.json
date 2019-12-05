@@ -1,6 +1,6 @@
 {
-    "name": "realestates-model",
-    "description": "realestates-model component",
+    "name": "model-realestates",
+    "description": "realestates component",
     "scripts": [
         "index.js",
         "create/index.js",
@@ -55,9 +55,9 @@
         "serandomps/user": "master",
         "serandomps/form": "master",
         "serandomps/gallery": "master",
-        "serandomps/locations": "master",
-        "serandomps/contacts": "master",
-        "serandomps/service-binaries": "master",
-        "serandomps/vehicle-makes": "master"
+        "serandomps/model-locations": "master",
+        "serandomps/model-contacts": "master",
+        "serandomps/model-binaries": "master",
+        "serandomps/model-vehicle-makes": "master"
     }
 }

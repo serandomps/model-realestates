@@ -4,11 +4,11 @@ var utils = require('utils');
 var form = require('form');
 var user = require('user');
 var RealEstates = require('../service');
-var Locations = require('locations').service;
+var Locations = require('model-locations').service;
 
 var allProvinces = Locations.allProvinces();
 
-dust.loadSource(dust.compile(require('./template'), 'realestates-model-filter'));
+dust.loadSource(dust.compile(require('./template'), 'model-realestates-filter'));
 
 var findQuery = function (vform, done) {
     vform.find(function (err, data) {
@@ -942,7 +942,7 @@ module.exports = function (ctx, container, options, done) {
                         }
                     }));
 
-                    dust.render('realestates-model-filter', serand.pack(query, container), function (err, out) {
+                    dust.render('model-realestates-filter', serand.pack(query, container), function (err, out) {
                         if (err) {
                             return done(err);
                         }
@@ -955,7 +955,7 @@ module.exports = function (ctx, container, options, done) {
                                 return done(err);
                             }
                             done(null, function () {
-                                $('.realestates-model-filter', sandbox).remove();
+                                $('.model-realestates-filter', sandbox).remove();
                             });
                         });
                     });

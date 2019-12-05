@@ -99,7 +99,7 @@ var render = function (ctx, container, paging, query, done) {
             return done(err);
         }
         var page = ++paging.total;
-        var pageBox = $('<div class="realestates-model-search-page" data-page="' + page + '"></div>');
+        var pageBox = $('<div class="model-realestates-search-page" data-page="' + page + '"></div>');
         find(ctx, {
             id: container.id,
             sandbox: pageBox
@@ -133,7 +133,7 @@ module.exports = function (ctx, container, options, done) {
         var activePage = 0;
 
         var findActivePage = function () {
-            return $('.realestates-model-search-page', container.sandbox).mostVisible().data('page');
+            return $('.model-realestates-search-page', container.sandbox).mostVisible().data('page');
         };
 
         var scrolled = function (o) {

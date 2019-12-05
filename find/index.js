@@ -3,13 +3,13 @@ var serand = require('serand');
 var utils = require('utils');
 var RealEstate = require('../service');
 
-dust.loadSource(dust.compile(require('./template'), 'realestates-model-find'));
-dust.loadSource(dust.compile(require('./annex'), 'realestates-model-find-annex'));
-dust.loadSource(dust.compile(require('./apartment'), 'realestates-model-find-apartment'));
-dust.loadSource(dust.compile(require('./building'), 'realestates-model-find-building'));
-dust.loadSource(dust.compile(require('./house'), 'realestates-model-find-house'));
-dust.loadSource(dust.compile(require('./land'), 'realestates-model-find-land'));
-dust.loadSource(dust.compile(require('./room'), 'realestates-model-find-room'));
+dust.loadSource(dust.compile(require('./template'), 'model-realestates-find'));
+dust.loadSource(dust.compile(require('./annex'), 'model-realestates-find-annex'));
+dust.loadSource(dust.compile(require('./apartment'), 'model-realestates-find-apartment'));
+dust.loadSource(dust.compile(require('./building'), 'model-realestates-find-building'));
+dust.loadSource(dust.compile(require('./house'), 'model-realestates-find-house'));
+dust.loadSource(dust.compile(require('./land'), 'model-realestates-find-land'));
+dust.loadSource(dust.compile(require('./room'), 'model-realestates-find-room'));
 
 var fetch = function (options, done) {
     if (options.realestates) {
@@ -33,13 +33,13 @@ module.exports = function (ctx, container, options, done) {
         if (err) {
             return done(err);
         }
-        dust.render('realestates-model-find', serand.pack(o, container), function (err, out) {
+        dust.render('model-realestates-find', serand.pack(o, container), function (err, out) {
             if (err) {
                 return done(err);
             }
             sandbox.append(out);
             done(null, function () {
-                $('.realestates-model-find', sandbox).remove();
+                $('.model-realestates-find', sandbox).remove();
             });
         });
     });

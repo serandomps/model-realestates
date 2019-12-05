@@ -6,13 +6,13 @@
         <nav class="navbar navbar-expand-lg navbar-light p-0">
             <h4 class="d-lg-none pull-right"><span class="badge badge-secondary text-capitalize">{status}</span></h4>
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
-                    data-target="#navbar-realestates-model-findone-{_.container}"
-                    aria-controls="navbar-realestates-model-findone-{_.container}" aria-expanded="false"
+                    data-target="#navbar-model-realestates-findone-{_.container}"
+                    aria-controls="navbar-model-realestates-findone-{_.container}" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbar-realestates-model-findone-{_.container}">
+            <div class="collapse navbar-collapse" id="navbar-model-realestates-findone-{_.container}">
                 <ul class="navbar-nav ml-auto">
                     {?_.bumpable}
                     <li class="nav-item">
@@ -32,11 +32,11 @@
                     {/_.privileged}
                     {?_.status.length}
                     <li class="status-buttons nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-realestates-model-findone-{_.container}"
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-model-realestates-findone-{_.container}"
                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-project-diagram fa-fw text-success mr-1"></i> Status
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown-realestates-model-findone-{_.container}">
+                        <div class="dropdown-menu" aria-labelledby="dropdown-model-realestates-findone-{_.container}">
                             {#_.status}
                             <a class="dropdown-item text-capitalize" href="#" data-action="{.}">{.}</a>
                             {/_.status}

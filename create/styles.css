@@ -1,37 +1,37 @@
-.sandbox-realestates-model-create h1.title {
+.sandbox-model-realestates-create h1.title {
     font-weight: bold;
     font-size: 2em;
 }
 
-.sandbox-realestates-model-create .form-control1 {
+.sandbox-model-realestates-create .form-control1 {
     margin-bottom: 10px;
 }
 
-.sandbox-realestates-model-create .control-label {
+.sandbox-model-realestates-create .control-label {
     margin-bottom: 4px;
 }
 
-.sandbox-realestates-model-create .fileinput-button {
+.sandbox-model-realestates-create .fileinput-button {
     margin-bottom: 10px;
 }
 
-.sandbox-realestates-model-create .files .filename {
+.sandbox-model-realestates-create .files .filename {
     overflow: hidden;
 }
 
-.sandbox-realestates-model-create .files .info {
+.sandbox-model-realestates-create .files .info {
     margin-bottom: 2px;
 }
 
-.sandbox-realestates-model-create .files .thumbnail {
+.sandbox-model-realestates-create .files .thumbnail {
     text-align: center;
 }
 
-.sandbox-realestates-model-create .btn.next {
+.sandbox-model-realestates-create .btn.next {
     margin-right: 5px;
 }
 
-.sandbox-realestates-model-create .remove-file {
+.sandbox-model-realestates-create .remove-file {
     position: absolute;
     top: 5px;
     right: 5px;
