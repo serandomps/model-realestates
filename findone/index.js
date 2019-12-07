@@ -83,6 +83,9 @@ module.exports = function (ctx, container, options, done) {
             realEstate._.user = o.user;
             realEstate._.contact = o.contact;
             realEstate._.location = o.location;
+            if (!realEstate._.location) {
+                realEstate._.location = Locations.locateByTags(realEstate.tags);
+            }
             if (token && token.user.id === realEstate.user) {
                 realEstate._.edit = true;
                 realEstate._.bumpable = utils.bumpable(realEstate);
