@@ -4,7 +4,8 @@ var utils = require('utils');
 var form = require('form');
 var locations = require('model-locations');
 var contacts = require('model-contacts');
-var RealEstate = require('../service');
+var Contacts = contacts.service;
+var RealEstates = require('../service');
 
 dust.loadSource(dust.compile(require('./template'), 'model-realestates-create'));
 
@@ -315,15 +316,25 @@ var realEstateConfigs = {
     }
 };
 
-var create = function (data, done) {
+var findContact = function (id, contact, done) {
+    if (contact) {
+        return done(null, contact);
+    }
+    Contacts.findOne({id: id}, done);
+};
+
+var create = function (data, location, contact, done) {
     utils.loading();
     var end = function (err, data) {
         utils.loaded();
         done(err, data);
     };
-    RealEstate.create(data, function (err, data) {
+    RealEstates.create(data, function (err, data) {
         if (err) {
             return end(err);
+        }
+        if (contact) {
+            return end(null, data);
         }
         utils.transit('realestates', 'realestates', data.id, 'review', function (err) {
             if (err) {
@@ -335,7 +346,7 @@ var create = function (data, done) {
 };
 
 var remove = function (id, done) {
-    RealEstate.remove({id: id}, done);
+    RealEstates.remove({id: id}, done);
 };
 
 var stepHandler = function (handler, done) {
@@ -448,27 +459,39 @@ var render = function (ctx, container, data, done) {
                                     return;
                                 }
                                 realEstate.id = realEstate.id || id;
-                                createHandler(handlers.location, function (err, errors, location) {
+                                createHandler(handlers.location, function (err, errors, lid, location) {
                                     if (err) {
                                         return console.error(err);
                                     }
                                     if (errors) {
                                         return;
                                     }
-                                    realEstate.location = location;
-                                    createHandler(handlers.contact, function (err, errors, contact) {
+                                    realEstate.location = lid;
+                                    createHandler(handlers.contact, function (err, errors, cid, contact) {
                                         if (err) {
                                             return console.error(err);
                                         }
                                         if (errors) {
                                             return;
                                         }
-                                        realEstate.contact = contact;
-                                        create(realEstate, function (err) {
+                                        realEstate.contact = cid;
+                                        findContact(cid, contact, function (err, contact) {
                                             if (err) {
                                                 return console.error(err);
                                             }
-                                            serand.redirect('/mine');
+                                            create(realEstate, location, contact,function (err, realEstate) {
+                                                if (err) {
+                                                    return console.error(err);
+                                                }
+                                                if (contact.status === 'published') {
+                                                    return serand.redirect('/realestates/' + realEstate.id);
+                                                }
+                                                var location = utils.resolve('realestates:///realestates/' + realEstate.id);
+                                                var url = utils.query('accounts:///contacts/' + cid + '/verify', {
+                                                    location: location
+                                                });
+                                                serand.redirect(url);
+                                            });
                                         });
                                     });
                                 });
@@ -514,7 +537,7 @@ module.exports = function (ctx, container, options, done) {
         render(ctx, container, serand.pack({}, container), done);
         return;
     }
-    RealEstate.findOne({
+    RealEstates.findOne({
         id: id,
         resolution: resolution
     }, function (err, realEstate) {
