@@ -15,18 +15,18 @@
             </h1>
             <div class="row text-muted mt-3">
                 <div class="col-lg mb-2 text-lg-center text-truncate">
-                    <i class="fas fa-shopping-cart fa-fw text-primary mr-1 text-truncate"></i>{_.offer}
+                    <i class="fas fa-shopping-cart fa-fw mr-1 text-truncate"></i>{_.offer}
                 </div>
                 <div class="col-lg mb-2 text-lg-center text-truncate">
                     <i class="fas fa-user fa-fw text-primary mr-1"></i>
                     <a href="/realestates?query[user]={_.user.id}" class="text-decoration-none text-secondary">{_.user.alias}</a>
                 </div>
                 <div class="col-lg mb-2 text-lg-center text-truncate">
-                    {?_.bumped} <i class="fas fa-angle-double-up text-primary mr-1"></i>{/_.bumped}
+                    {?_.bumped} <i class="fas fa-angle-double-up mr-1"></i>{/_.bumped}
                     <i class="fas fa-clock fa-fw"></i> {createdAt|ago}
                 </div>
                 <div class="col-lg mb-2 text-lg-center text-truncate">
-                    <i class="fas fa-map-marker-alt fa-fw text-primary"></i> {_.city}
+                    <i class="fas fa-map-marker-alt fa-fw"></i> {_.city}
                 </div>
             </div>
             <div class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls mt-3">

@@ -871,11 +871,11 @@ var configs = {
     }
 };
 
-var findUser = function (user, done) {
-    if (!user) {
+var findUser = function (usr, done) {
+    if (!usr) {
         return done();
     }
-    user.findOne(user, done);
+    user.findOne(usr, done);
 };
 
 module.exports = function (ctx, container, options, done) {
