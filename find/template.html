@@ -1,9 +1,9 @@
 <div class="model-realestates-find">
     {?title}
     {?secondary}
-    <h3 class="title font-weight-bolder mb-3 text-muted">{title}</h3>
+    <h3 class="title font-weight-bolder mb-3">{title}</h3>
     {:else}
-    <h1 class="title text-center font-weight-bolder mb-3 text-muted">{title}</h1>
+    <h1 class="title font-weight-bolder mb-3">{title}</h1>
     {/secondary}{/title}
     {@slice context=realestates size="30"}
     <div class="row">
@@ -11,16 +11,71 @@
         <div class="col-lg-{size}">
             <div class="thumbnail">
                 <div class="card mb-3">
-                    <a href="{prefix}/{id}"{?external} target="_blank"{/external}>
-                        <img src="{_.images[0].url}" class="card-img-top" alt="..."/>
+                    <a href="{prefix}/{id}" {?external} target="_blank" {/external}>
+                    <img src="{_.images[0].url}" class="card-img-top" alt="..."/>
                     </a>
                     <div class="card-body position-relative">
-                        {?_.annex}{>"model-realestates-find-annex"/}{/_.annex}
-                        {?_.apartment}{>"model-realestates-find-apartment"/}{/_.apartment}
-                        {?_.building}{>"model-realestates-find-building"/}{/_.building}
-                        {?_.house}{>"model-realestates-find-house"/}{/_.house}
-                        {?_.land}{>"model-realestates-find-land"/}{/_.land}
-                        {?_.room}{>"model-realestates-find-room"/}{/_.room}
+                        <h4 class="card-title text-truncate text-muted">
+                            <a href="{prefix}/{id}" class="stretched-link text-dark font-weight-bolder" {?external}
+                               target="_blank" {/external}>{_.title|s}
+                            </a>
+                        </h4>
+                        <div class="d-flex justify-content-between text-muted">
+                            <div class="pr-5 text-truncate">
+                                <span class="font-weight-bolder mr-1">{price}</span>
+                                <small>LKR</small>
+                            </div>
+                            <div class="text-truncate">
+                                {?_.annex}
+                                <span class="fas fa-bed fa-fw mr-1"></span>{bedrooms}
+                                {/_.annex}
+                                {?_.apartment}
+                                <span class="fas fa-bed fa-fw mr-1"></span>{bedrooms}
+                                {/_.apartment}
+                                {?_.building}
+                                <span class="mr-1">{area}</span>ft<sup>2</sup>
+                                {/_.building}
+                                {?_.house}
+                                <span class="fas fa-bed fa-fw mr-1"></span>{bedrooms}
+                                {/_.house}
+                                {?_.land}
+                                <span class="mr-1">{extent}</span>p
+                                {/_.land}
+                                {?_.room}
+                                <span class="mr-1">{area}</span>ft<sup>2</sup>
+                                {/_.room}
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-1 text-muted">
+                            <div class="pr-5">
+                                <span class="font-weight-bolder">{_.city}</span>
+                            </div>
+                            <div class="card-text">
+                                {?_.annex}
+                                <span class="fas fa-parking fa-fw mr-1"></span>{parking}
+                                {/_.annex}
+                                {?_.apartment}
+                                <span class="fas fa-restroom fa-fw mr-1"></span>{bathrooms}
+                                {/_.apartment}
+                                {?_.building}
+                                <span class="fas fa-parking fa-fw mr-1"></span>{parking}
+                                {/_.building}
+                                {?_.house}
+                                <span class="fas fa-bars fa-fw mr-1"></span>{floors}
+                                {/_.house}
+                                {?_.land}
+                                {?residential}
+                                <span class="fas fa-home fa-fw {?commercial} mr-1{/commercial}"></span>
+                                {/residential}
+                                {?commercial}
+                                <span class="fas fa-building fa-fw"></span>
+                                {/commercial}
+                                {/_.land}
+                                {?_.room}
+                                <span class="fas fa-parking fa-fw mr-1"></span>{parking}
+                                {/_.room}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

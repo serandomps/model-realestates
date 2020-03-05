@@ -89,6 +89,7 @@ var update = function (realEstates, options, done) {
         realEstate._ = {};
         realEstate._.title = title(realEstate);
         realEstate._[realEstate.type] = true;
+        realEstate.description = (realEstate.description !== '<p><br></p>') ? realEstate.description : null;
     });
     cdn(options.resolution, realEstates, function (err) {
         if (err) {

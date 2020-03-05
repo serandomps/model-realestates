@@ -17,12 +17,6 @@ dust.loadSource(dust.compile(require('./template'), 'model-realestates-findone')
 dust.loadSource(dust.compile(require('./actions'), 'model-realestates-findone-actions'));
 dust.loadSource(dust.compile(require('./status'), 'model-realestates-findone-status'));
 dust.loadSource(dust.compile(require('./details'), 'model-realestates-findone-details'));
-dust.loadSource(dust.compile(require('./annex'), 'model-realestates-findone-annex'));
-dust.loadSource(dust.compile(require('./apartment'), 'model-realestates-findone-apartment'));
-dust.loadSource(dust.compile(require('./building'), 'model-realestates-findone-building'));
-dust.loadSource(dust.compile(require('./house'), 'model-realestates-findone-house'));
-dust.loadSource(dust.compile(require('./land'), 'model-realestates-findone-land'));
-dust.loadSource(dust.compile(require('./room'), 'model-realestates-findone-room'));
 
 var findLocation = function (id, done) {
     $.ajax({
@@ -91,7 +85,7 @@ module.exports = function (ctx, container, options, done) {
                 realEstate._.bumpable = utils.bumpable(realEstate);
             }
             realEstate._.bumped = (realEstate.createdAt !== realEstate.updatedAt);
-            realEstate._.offer = utils.capitalize(realEstate.type) + ' for ' + (realEstate.offer === 'sell' ? 'Sale' : 'Rent');
+            realEstate._.offer = (realEstate.offer === 'sell' ? 'sells' : 'rents');
             utils.workflow('model', function (err, workflow) {
                 if (err) {
                     return done(err);

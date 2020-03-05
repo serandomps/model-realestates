@@ -4,12 +4,6 @@ var utils = require('utils');
 var RealEstate = require('../service');
 
 dust.loadSource(dust.compile(require('./template'), 'model-realestates-find'));
-dust.loadSource(dust.compile(require('./annex'), 'model-realestates-find-annex'));
-dust.loadSource(dust.compile(require('./apartment'), 'model-realestates-find-apartment'));
-dust.loadSource(dust.compile(require('./building'), 'model-realestates-find-building'));
-dust.loadSource(dust.compile(require('./house'), 'model-realestates-find-house'));
-dust.loadSource(dust.compile(require('./land'), 'model-realestates-find-land'));
-dust.loadSource(dust.compile(require('./room'), 'model-realestates-find-room'));
 
 var fetch = function (options, done) {
     if (options.realestates) {
