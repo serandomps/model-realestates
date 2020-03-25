@@ -46,3 +46,7 @@
 .sandbox-model-realestates-filter .parking-gte {
     margin-bottom: 0.5rem!important;
 }
+
+.sandbox-model-realestates-filter .collapse-filters {
+    font-size: 16px !important;
+}
