@@ -22,8 +22,7 @@
                             {?_.user._.avatar}
                             <img class="avatar rounded-circle mb-2" src="{_.user._.avatar}"/>
                             {:else}
-                            <div
-                                class="avatar d-inline-block text-light rounded-circle bg-secondary font-weight-bolder mb-2">
+                            <div class="avatar d-inline-block text-light rounded-circle bg-secondary font-weight-bolder mb-2">
                                 {_.user._.initials}
                             </div>
                             {/_.user._.avatar}
@@ -38,18 +37,12 @@
                              <span class="text-primary">{_.user.alias}</span>
                          </div>-->
                         {/_.user}
-                        {@blocks block="select" id=_.container name="location-province" value=province
-                        options=_.provinces label="Province" search="true" size="10" icon="fas fa-landmark"/}
-                        {@blocks block="select" id=_.container name="location-district" value=districts
-                        options=_.districts label="District" search="true" size="10" icon="fas fa-archway"/}
-                        {@blocks block="select" id=_.container name="location-city" value=city options=_.cities
-                        label="City" search="true" size="10" icon="fas fa-city"/}
-                        {@blocks block="select" id=_.container name="type" label="Type" value=type options=_.types
-                        search="true" size="10" icon="fas fa-tag"/}
-                        {@blocks block="checkboxes" id=_.container name="offer" value=offer options=_.offer
-                        label="Offer" icon="fas fa-shopping-cart"/}
-                        {@blocks block="checkboxes" id=_.container name="usage" value=usage options=_.usage
-                        label="Usage" icon="fas fa-building"/}
+                        {@blocks block="select" id=_.container name="location-province" value=province options=_.provinces label="Province" search="true" size="10" icon="fas fa-landmark"/}
+                        {@blocks block="select" id=_.container name="location-district" value=districts options=_.districts label="District" search="true" size="10" icon="fas fa-archway"/}
+                        {@blocks block="select" id=_.container name="location-city" value=city options=_.cities label="City" search="true" size="10" icon="fas fa-city"/}
+                        {@blocks block="select" id=_.container name="type" label="Type" value=type options=_.types search="true" size="10" icon="fas fa-tag"/}
+                        {@blocks block="checkboxes" id=_.container name="offer" value=offer options=_.offer label="Offer" icon="fas fa-shopping-cart"/}
+                        {@blocks block="checkboxes" id=_.container name="usage" value=usage options=_.usage label="Usage" icon="fas fa-building"/}
                         <div class="form-group price">
                             <label class="title-text font-weight-bolder"><i
                                 class="text-dark fas fa-money-check-alt mr-2"></i>Price</label>
