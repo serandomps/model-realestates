@@ -2,7 +2,7 @@
 <form role="form">
     {@steps}
         {@step name="realestate" title="Vehicle" icon="fas fa-2x fa-car" active="true" back=_.back}
-            {@blocks block="select" id=_.container name="type" label="Type" title="Type" options=_.types search="true" size="10" icon="fas fa-tag"/}
+            {@blocks block="select" id=_.container name="type" label="Type" title="Type" options=_.types size="10" icon="fas fa-tag"/}
             {@blocks block="radios" id=_.container name="offer" value=offer options=_.offer label="Offer" icon="fas fa-shopping-cart"/}
             {@blocks block="checkboxes" id=_.container name="usage" value=usage options=_.usage label="Usage" icon="fas fa-building"/}
             {@blocks block="text" id=_.container name="title" value=title help="Title (optional)" label="Title" icon="fas fa-heading"/}
