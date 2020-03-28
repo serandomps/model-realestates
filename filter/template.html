@@ -26,7 +26,7 @@
                                 {_.user._.initials}
                             </div>
                             {/_.user._.avatar}
-                            <h2 class="h5 text-primary font-weight-bolder">{_.user.alias}</h2>
+                            <h2 class="h5 text-primary font-weight-bolder">{_.user.username}</h2>
                             <a href="#" class="exclude h5 far fa-times-circle text-danger text-decoration-none"></a>
                         </div>
                         <!-- <div class="source user form-group text-center1 mb-3">
@@ -34,7 +34,7 @@
                                  <div class="p-2 flex-fill text-left"><i class="far h5 fa-user"></i></div>
                                  <div class="p-2 flex-fill text-right"><i class="far h5 fa-times-circle text-danger"></i></div>
                              </div>
-                             <span class="text-primary">{_.user.alias}</span>
+                             <span class="text-primary">{_.user.username}</span>
                          </div>-->
                         {/_.user}
                         {@blocks block="select" id=_.container name="location-province" value=province options=_.provinces label="Province" size="10" icon="fas fa-landmark"/}

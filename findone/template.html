@@ -21,7 +21,7 @@
             <div class="text-muted d-none d-lg-flex">
                 <div class="text-truncate mr-3">
                     <i class="fas fa-user fa-fw mr-1 text-truncate"></i>
-                    <a href="/realestates?query[user]={_.user.id}" class="text-decoration-none text-primary">{_.user.alias}</a>
+                    <a href="/realestates?query[user]={_.user.id}" class="text-decoration-none text-primary">{_.user.username}</a>
                 </div>
                 <div class="mr-3">
                     {?_.bumped} <i class="fas fa-angle-double-up text-warning mr-1"></i>{/_.bumped}
@@ -34,7 +34,7 @@
             <div class="row text-muted d-lg-none">
                 <div class="col-lg mb-2">
                     <i class="fas fa-user fa-fw text-primary mr-1"></i>
-                    <a href="/realestates?query[user]={_.user.id}" class="text-decoration-none text-secondary">{_.user.alias}</a>
+                    <a href="/realestates?query[user]={_.user.id}" class="text-decoration-none text-secondary">{_.user.username}</a>
                 </div>
                 <div class="col-lg mb-2">
                     {?_.bumped} <i class="fas fa-angle-double-up fa-fw text-warning mr-1"></i>{/_.bumped}
