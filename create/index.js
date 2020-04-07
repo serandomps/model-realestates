@@ -426,6 +426,7 @@ var render = function (ctx, container, data, done) {
                 creatable: true,
                 required: true,
                 label: 'Location',
+                user: data.user,
                 location: data.location
             }, function (err, o) {
                 if (err) {
@@ -441,6 +442,7 @@ var render = function (ctx, container, data, done) {
                     creatable: true,
                     required: true,
                     label: 'Contacts',
+                    user: data.user,
                     contact: data.contact
                 }, function (err, o) {
                     if (err) {

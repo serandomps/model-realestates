@@ -9,28 +9,37 @@ var types = _.sortBy([
     {value: 'room', label: 'Room'}
 ], 'value');
 
-var cdn = function (size, items, done) {
-    if (!size) {
-        return done();
-    }
+var sizes = [
+    {key: 'x288', size: '288x162'},
+    {key: 'x160', size: '160x160'},
+    {key: 'x800', size: '800x450'}
+];
+
+var cdn = function (items, done) {
     items = items instanceof Array ? items : [items];
-    async.each(items, function (item, did) {
+    async.eachSeries(items, function (item, did) {
         var images = item.images;
         if (!images) {
             return did();
         }
         var o = [];
         var index = 0;
-        async.each(images, function (image, pushed) {
-            utils.cdn('images', '/images/' + size + '/' + image, function (err, url) {
-                if (err) {
-                    return pushed(err);
-                }
-                o.push({
-                    id: image,
-                    url: url,
-                    index: index++
+        async.eachSeries(images, function (image, pushed) {
+            var entry = {
+                id: image,
+                index: index++
+            };
+            async.eachSeries(sizes, function (o, calculated) {
+                utils.cdn('images', '/images/' + o.size + '/' + image, function (err, url) {
+                    if (err) {
+                        return calculated(err);
+                    }
+                    entry[o.key] = url;
+                    calculated();
                 });
+            }, function (err) {
+                if (err) return pushed(err);
+                o.push(entry);
                 pushed();
             });
         }, function (err) {
@@ -91,7 +100,7 @@ var update = function (realEstates, options, done) {
         realEstate._[realEstate.type] = true;
         realEstate.description = (realEstate.description !== '<p><br></p>') ? realEstate.description : null;
     });
-    cdn(options.resolution, realEstates, function (err) {
+    cdn(realEstates, function (err) {
         if (err) {
             return done(err);
         }

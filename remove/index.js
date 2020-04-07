@@ -7,7 +7,7 @@ dust.loadSource(dust.compile(require('./template'), 'model-realestates-remove'))
 
 module.exports = function (ctx, container, options, done) {
     var sandbox = container.sandbox;
-    Vehicle.findOne({id: options.id, resolution: '800x450'}, function (err, vehicle) {
+    Vehicle.findOne({id: options.id}, function (err, vehicle) {
         if (err) return done(err);
         dust.render('model-realestates-remove', serand.pack(vehicle, container), function (err, out) {
             if (err) {
@@ -35,8 +35,8 @@ module.exports = function (ctx, container, options, done) {
                     for (i = 0; i < length; i++) {
                         image = images[i];
                         o.push({
-                            href: image.url,
-                            thumbnail: image.url
+                            href: image.x800,
+                            thumbnail: image.x160
                         });
                     }
                     blueimp.Gallery(o, {

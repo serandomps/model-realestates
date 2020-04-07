@@ -18,10 +18,3 @@
 .sandbox-model-realestates-create .btn.next {
     margin-right: 5px;
 }
-
-.sandbox-model-realestates-create .remove-file {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    color: #d9534f;
-}

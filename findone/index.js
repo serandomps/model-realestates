@@ -48,7 +48,7 @@ var findContact = function (id, done) {
 
 module.exports = function (ctx, container, options, done) {
     var sandbox = container.sandbox;
-    RealEstate.findOne({id: options.id, resolution: '800x450'}, function (err, realEstate) {
+    RealEstate.findOne({id: options.id}, function (err, realEstate) {
         if (err) {
             return done(err);
         }
@@ -155,8 +155,8 @@ module.exports = function (ctx, container, options, done) {
                                     for (i = 0; i < length; i++) {
                                         image = images[i];
                                         o.push({
-                                            href: image.url,
-                                            thumbnail: image.url
+                                            href: image.x800,
+                                            thumbnail: image.x160
                                         });
                                     }
                                     blueimp.Gallery(o, {
