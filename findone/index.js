@@ -7,6 +7,9 @@ var user = require('user');
 var locations = require('model-locations');
 var Locations = locations.service;
 
+var contacts = require('model-contacts');
+var Contacts = contacts.service;
+
 var recent = require('../recent');
 
 var redirect = serand.redirect;
@@ -18,34 +21,6 @@ dust.loadSource(dust.compile(require('./actions'), 'model-realestates-findone-ac
 dust.loadSource(dust.compile(require('./status'), 'model-realestates-findone-status'));
 dust.loadSource(dust.compile(require('./details'), 'model-realestates-findone-details'));
 
-var findLocation = function (id, done) {
-    $.ajax({
-        method: 'GET',
-        url: utils.resolve('accounts:///apis/v/locations/' + id),
-        dataType: 'json',
-        success: function (data) {
-            done(null, data);
-        },
-        error: function (xhr, status, err) {
-            done(err || status || xhr);
-        }
-    });
-};
-
-var findContact = function (id, done) {
-    $.ajax({
-        method: 'GET',
-        url: utils.resolve('accounts:///apis/v/contacts/' + id),
-        dataType: 'json',
-        success: function (data) {
-            done(null, data);
-        },
-        error: function (xhr, status, err) {
-            done(err || status || xhr);
-        }
-    });
-};
-
 module.exports = function (ctx, container, options, done) {
     var sandbox = container.sandbox;
     RealEstate.findOne({id: options.id}, function (err, realEstate) {
@@ -54,7 +29,7 @@ module.exports = function (ctx, container, options, done) {
         }
         async.parallel({
             location: function (found) {
-                findLocation(realEstate.location, function (ignored, location) {
+                Locations.findOne({id: realEstate.location}, function (ignored, location) {
                     if (location) {
                         location.country = Locations.findCountry(location.country);
                     }
@@ -62,7 +37,7 @@ module.exports = function (ctx, container, options, done) {
                 });
             },
             contact: function (found) {
-                findContact(realEstate.contact, function (ignored, contact) {
+                Contacts.findOne({id: realEstate.contact}, function (ignored, contact) {
                     found(null, contact);
                 });
             },
@@ -108,7 +83,7 @@ module.exports = function (ctx, container, options, done) {
                     }, {
                         required: true,
                         label: 'Location of the real estate',
-                        id: realEstate.location
+                        location: realEstate._.location
                     }, function (ignored, o) {
                         recent(ctx, {
                             id: container.id,
