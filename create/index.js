@@ -325,20 +325,14 @@ var findContact = function (id, contact, done) {
     Contacts.findOne({id: id}, done);
 };
 
-var create = function (data, location, contact, done) {
-    RealEstates.create(data, function (err, data) {
+var create = function (found, realEstate, location, contact, done) {
+    utils.create('realestates', 'realestates', RealEstates.create, found, realEstate, function (realEstate, action) {
+        return true
+    }, function (err, data) {
         if (err) {
             return done(err);
         }
-        if (contact) {
-            return done(null, data);
-        }
-        utils.transit('realestates', 'realestates', data.id, 'review', function (err) {
-            if (err) {
-                return done(err);
-            }
-            done(null, data);
-        });
+        done(null, data);
     });
 };
 
@@ -380,10 +374,10 @@ var createHandler = function (handler, done) {
     })
 };
 
-var render = function (ctx, container, data, done) {
-    var id = data.id;
+var render = function (ctx, container, found, done) {
     var sandbox = container.sandbox;
-    data._ = data._ || {};
+    var data = serand.pack(found || {}, container)
+    var id = data.id;
     data._.types = [
         {label: 'Annex', value: 'annex'},
         {label: 'Apartment', value: 'apartment'},
@@ -485,7 +479,7 @@ var render = function (ctx, container, data, done) {
                                             if (err) {
                                                 return end(err);
                                             }
-                                            create(realEstate, location, contact,function (err, realEstate) {
+                                            create(found, realEstate, location, contact,function (err, realEstate) {
                                                 if (err) {
                                                     return end(err);
                                                 }
@@ -540,7 +534,7 @@ module.exports = function (ctx, container, options, done) {
     options = options || {};
     var id = options.id;
     if (!id) {
-        render(ctx, container, serand.pack({}, container), done);
+        render(ctx, container, null, done);
         return;
     }
     RealEstates.findOne({

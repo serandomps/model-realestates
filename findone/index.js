@@ -95,13 +95,14 @@ module.exports = function (ctx, container, options, done) {
                             elem.on('click', '.status-buttons .dropdown-item', function () {
                                 utils.loading();
                                 var action = $(this).data('action');
+                                if (action === 'edit') {
+                                    redirect('/realestates/' + realEstate.id + '/edit');
+                                    return false;
+                                }
                                 utils.transit('realestates', 'realestates', realEstate.id, action, function (err) {
                                     utils.loaded();
                                     if (err) {
                                         return console.error(err);
-                                    }
-                                    if (action === 'edit') {
-                                        return redirect('/realestates/' + realEstate.id + '/edit');
                                     }
                                     redirect('/realestates/' + realEstate.id);
                                 });
@@ -116,6 +117,7 @@ module.exports = function (ctx, container, options, done) {
                                     }
                                     redirect('/realestates/' + realEstate.id);
                                 });
+                                return false;
                             });
                             done(null, {
                                 clean: function () {
