@@ -60,7 +60,7 @@ module.exports = function (ctx, container, options, done) {
                 realEstate._.bumpable = utils.bumpable(realEstate);
             }
             realEstate._.bumped = (realEstate.createdAt !== realEstate.updatedAt);
-            realEstate._.offer = (realEstate.offer === 'sell' ? 'sells' : 'rents');
+            realEstate._.offer = (realEstate.offer === 'sell' ? 'sale' : 'rent');
             utils.workflow('model', function (err, workflow) {
                 if (err) {
                     return done(err);

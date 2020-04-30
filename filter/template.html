@@ -3,12 +3,12 @@
         <div class="card">
             <div class="card-header" role="tab" id="heading-{_.container}">
                 <h4 class="m-0">
-                    <button class="collapse-filters btn btn-link p-0 text-dark font-weight-bolder text-decoration-none d-lg-none"
+                    <button class="collapse-filters btn btn-link p-0 text-dark font-weight-bold text-decoration-none d-lg-none"
                         data-toggle="collapse" data-target="#collapse-{_.container}"
                         aria-expanded="true" aria-controls="collapse-{_.container}">
                         <i class="fas fa-search fa-fw mr-2"></i>Search
                     </button>
-                    <span class="text-dark font-weight-bolder d-none d-lg-block">
+                    <span class="text-dark font-weight-bold d-none d-lg-block">
                         <i class="fas fa-search fa-fw mr-2"></i>Search
                     </span>
                 </h4>
@@ -22,11 +22,11 @@
                             {?_.user._.avatar}
                             <img class="avatar rounded-circle mb-2" src="{_.user._.avatar}"/>
                             {:else}
-                            <div class="avatar d-inline-block text-light rounded-circle bg-secondary font-weight-bolder mb-2">
+                            <div class="avatar d-inline-block text-light rounded-circle bg-secondary font-weight-bold mb-2">
                                 {_.user._.initials}
                             </div>
                             {/_.user._.avatar}
-                            <h2 class="h5 text-primary font-weight-bolder">{_.user.username}</h2>
+                            <h2 class="h5 text-primary font-weight-bold">{_.user.username}</h2>
                             <a href="#" class="exclude h5 far fa-times-circle text-danger text-decoration-none"></a>
                         </div>
                         <!-- <div class="source user form-group text-center1 mb-3">
@@ -44,42 +44,42 @@
                         {@blocks block="checkboxes" id=_.container name="offer" value=offer options=_.offer label="Offer" icon="fas fa-shopping-cart"/}
                         {@blocks block="checkboxes" id=_.container name="usage" value=usage options=_.usage label="Usage" icon="fas fa-building"/}
                         <div class="form-group price">
-                            <label class="title-text font-weight-bolder"><i class="text-dark fas fa-money-check-alt mr-2"></i>Price</label>
+                            <label class="title-text font-weight-bold"><i class="text-dark fas fa-money-check-alt mr-2"></i>Price</label>
                             {@blocks block="text" id=_.container name="price-gte" help="Min (LKR)"/}
                             {@blocks block="text" id=_.container name="price-lte" help="Max (LKR)"/}
                         </div>
                         <div class="form-group extent">
-                            <label class="title-text font-weight-bolder"><i class="text-dark fas fa-arrows-alt-h mr-2"></i>Extent</label>
+                            <label class="title-text font-weight-bold"><i class="text-dark fas fa-arrows-alt-h mr-2"></i>Extent</label>
                             {@blocks block="text" id=_.container name="extent-gte" help="Min (perch)"/}
                             {@blocks block="text" id=_.container name="extent-lte" help="Max (perch)"/}
                         </div>
 
                         <div class="form-group area">
-                            <label class="title-text font-weight-bolder"><i class="text-dark fas fa-square mr-2"></i>Area</label>
+                            <label class="title-text font-weight-bold"><i class="text-dark fas fa-square mr-2"></i>Area</label>
                             {@blocks block="text" id=_.container name="area-gte" help="Min (sqft)"/}
                             {@blocks block="text" id=_.container name="area-lte" help="Max (sqft)"/}
                         </div>
 
                         <div class="form-group bedrooms">
-                            <label class="title-text font-weight-bolder"><i class="text-dark fas fa-bed mr-2"></i>Bedrooms</label>
+                            <label class="title-text font-weight-bold"><i class="text-dark fas fa-bed mr-2"></i>Bedrooms</label>
                             {@blocks block="text" id=_.container name="bedrooms-gte" help="Min"/}
                             {@blocks block="text" id=_.container name="bedrooms-lte" help="Max"/}
                         </div>
 
                         <div class="form-group bathrooms">
-                            <label class="title-text font-weight-bolder"><i class="text-dark fas fa-restroom mr-2"></i>Bathrooms</label>
+                            <label class="title-text font-weight-bold"><i class="text-dark fas fa-restroom mr-2"></i>Bathrooms</label>
                             {@blocks block="text" id=_.container name="bathrooms-gte" help="Min"/}
                             {@blocks block="text" id=_.container name="bathrooms-lte" help="Max"/}
                         </div>
 
                         <div class="form-group floors">
-                            <label class="title-text font-weight-bolder"><i class="text-dark fas fa-building mr-2"></i>Floors</label>
+                            <label class="title-text font-weight-bold"><i class="text-dark fas fa-building mr-2"></i>Floors</label>
                             {@blocks block="text" id=_.container name="floors-gte" help="Min"/}
                             {@blocks block="text" id=_.container name="floors-lte" help="Max"/}
                         </div>
 
                         <div class="form-group parking">
-                            <label class="title-text font-weight-bolder"><i class="text-dark fas fa-parking mr-2"></i>Parking</label>
+                            <label class="title-text font-weight-bold"><i class="text-dark fas fa-parking mr-2"></i>Parking</label>
                             {@blocks block="text" id=_.container name="parking-gte" help="Min (Slots)"/}
                             {@blocks block="text" id=_.container name="parking-lte" help="Max (Slots)"/}
                         </div>

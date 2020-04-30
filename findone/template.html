@@ -10,41 +10,6 @@
             {/is}
             {/_.edit}
             </div>
-            <div class="d-flex">
-                <h1 class="font-weight-bolder title text-dark">
-                    {_.title|s}
-                    <span class="text-muted h5 ml-1">{_.offer} for</span>
-                    <span class="text-danger h2 font-weight-bolder ml-1">{price|numeral}</span>
-                    <span class="text-muted h5 ml-1"><small>LKR</small></span>
-                </h1>
-            </div>
-            <div class="text-muted d-none d-lg-flex">
-                <div class="text-truncate mr-3">
-                    <i class="fas fa-user fa-fw mr-1 text-truncate"></i>
-                    <a href="/realestates?query[user]={_.user.id}" class="text-decoration-none text-primary">{_.user.username}</a>
-                </div>
-                <div class="mr-3">
-                    {?_.bumped} <i class="fas fa-angle-double-up text-warning mr-1"></i>{/_.bumped}
-                    <i class="fas fa-clock fa-fw"></i> {createdAt|ago}
-                </div>
-                <div class="mr-4">
-                    <i class="fas fa-map-marker-alt fa-fw"></i> {_.city}
-                </div>
-            </div>
-            <div class="row text-muted d-lg-none">
-                <div class="col-lg mb-2">
-                    <i class="fas fa-user fa-fw text-primary mr-1"></i>
-                    <a href="/realestates?query[user]={_.user.id}" class="text-decoration-none text-secondary">{_.user.username}</a>
-                </div>
-                <div class="col-lg mb-2">
-                    {?_.bumped} <i class="fas fa-angle-double-up fa-fw text-warning mr-1"></i>{/_.bumped}
-                    <i class="fas fa-clock fa-fw mr-1"></i>{createdAt|ago}
-                </div>
-                <div class="col-lg mb-2">
-                    <i class="fas fa-map-marker-alt fa-fw mr-1"></i>{_.city}
-                </div>
-            </div>
-
             <div class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls gallery-thumbnails mt-3">
                 <div class="slides"></div>
                 <h3 class="title"></h3>
@@ -53,19 +18,12 @@
                 <a class="play-pause"></a>
                 <ol class="indicator"></ol>
             </div>
-            <div class="details">
+            <div class="serand-details">
                 {>"model-realestates-findone-details"/}
             </div>
             {?_.location}
             <div class="location"></div>
             {/_.location}
-            <div class="row mt-4">
-                <div class="col-lg text-right">
-                    <a href="/realestates/{id}/report" class="text-decoration-none text-muted font-weight-bolder">
-                        <i class="fas fa-flag fa-fw text-danger mr-2"></i>Report
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="col-lg-3">
             <div class="recent"></div>

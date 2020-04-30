@@ -311,7 +311,7 @@ var realEstateConfigs = {
             var el = $('.images', vform.elem);
             serand.blocks('uploads', 'create', el, {
                 value: value,
-                max: 5,
+                max: 10,
                 min: 1
             }, done);
         }
