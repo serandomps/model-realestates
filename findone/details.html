@@ -1,5 +1,5 @@
 <div class="d-none d-lg-flex mt-4">
-    <div class="text-dark mr-3">
+    <div class="text-dark mr-5">
         <h1 class="font-weight-bold title text-dark">{_.title|s}</h1>
         <div class="text-muted d-flex">
             <div class="text-truncate mr-2">
@@ -26,8 +26,8 @@
     </div>
     <div class="text-dark">
         <h1 class="font-weight-bold title text-dark mt-2">
-            <span class="text-danger ml-1 h0">{price|numeral}</span>
-            <span class="text-muted h5 ml-1"><small>LKR</small></span>
+            <span class="text-info h0 mr-1">{price|numeral}</span>
+            <span class="text-muted h6">LKR</span>
         </h1>
     </div>
 </div>
@@ -52,8 +52,8 @@
         </div>
     </div>
     <div class="col-lg font-weight-bold title text-dark mt-3">
-        <span class="text-danger h0">{price|numeral}</span>
-        <span class="text-muted h5 ml-1"><small class="text-muted h5 ml-1">LKR</small></span>
+        <span class="text-info h0 mr-1">{price|numeral}</span>
+        <span class="text-muted h6">LKR</span>
     </div>
     <div class="col-lg btn-group actions mt-2" role="group">
         <!--<button type="button" class="btn rounded-circle pl-0 mr-1">
@@ -76,7 +76,7 @@
               <i class="fas fa-bed fa-fw text-muted"></i>
             </span>
             <div class="media-body">
-                <h4 class="h6 text-secondary mb-0 mt-0">Bedrooms</h4>
+                <h4 class="h5 text-secondary mb-1 mt-0">Bedrooms</h4>
                 <span class="h4 font-weight-bold text-dark">{bedrooms|numeral}</span>
             </div>
         </div>
@@ -89,7 +89,7 @@
               <i class="fas fa-restroom fa-fw text-muted"></i>
             </span>
             <div class="media-body">
-                <h4 class="h6 text-secondary mb-0 mt-0">Bathrooms</h4>
+                <h4 class="h5 text-secondary mb-1 mt-0">Bathrooms</h4>
                 <span class="h4 font-weight-bold text-dark">{bathrooms|numeral}</span>
             </div>
         </div>
@@ -102,7 +102,7 @@
               <i class="fas fa-parking fa-fw text-muted"></i>
             </span>
             <div class="media-body">
-                <h4 class="h6 text-secondary mb-0 mt-0">Parking</h4>
+                <h4 class="h5 text-secondary mb-1 mt-0">Parking</h4>
                 <span class="h4 font-weight-bold text-dark">{parking|numeral}</span>
             </div>
         </div>
@@ -115,7 +115,7 @@
               <i class="fas fa-arrows-alt-h fa-fw text-muted"></i>
             </span>
             <div class="media-body">
-                <h4 class="h6 text-secondary mb-0 mt-0">Extent</h4>
+                <h4 class="h5 text-secondary mb-1 mt-0">Extent</h4>
                 <span class="h4 font-weight-bold text-dark mr-1">{extent|numeral}</span>
                 <small class="text-muted">p</small>
             </div>
@@ -129,8 +129,8 @@
               <i class="fas fa-bars fa-fw text-muted"></i>
             </span>
             <div class="media-body">
-                <h4 class="h6 text-secondary mb-0 mt-0">Floors</h4>
-                <span class="h4 font-weight-bold">{floors|numeral}</span>
+                <h4 class="h5 text-secondary mb-1 mt-0">Floors</h4>
+                <span class="h4 font-weight-bold text-dark">{floors|numeral}</span>
             </div>
         </div>
     </div>
@@ -142,7 +142,7 @@
               <i class="fas fa-square fa-fw text-muted"></i>
             </span>
             <div class="media-body">
-                <h4 class="h6 text-secondary mb-0 mt-0">Area</h4>
+                <h4 class="h5 text-secondary mb-1 mt-0">Area</h4>
                 <span class="h4 font-weight-bold text-dark mr-1">{area|numeral}</span>
                 <small class="text-muted">ft<sup>2</sup></small>
             </div>
@@ -156,8 +156,8 @@
               <i class="fas fa-home fa-fw text-muted"></i>
             </span>
             <div class="media-body">
-                <h4 class="h6 text-secondary mb-0 mt-0">Residential</h4>
-                <span class="h4 text-capitalize font-weight-bold">Yes</span>
+                <h4 class="h5 text-secondary mb-1 mt-0">Residential</h4>
+                <span class="h4 text-capitalize font-weight-bold text-dark">Yes</span>
             </div>
         </div>
     </div>
@@ -169,8 +169,8 @@
               <i class="fas fa-building fa-fw text-muted"></i>
             </span>
             <div class="media-body">
-                <h4 class="h6 text-secondary mb-0 mt-0">Commercial</h4>
-                <span class="h4 text-capitalize font-weight-bold">Yes</span>
+                <h4 class="h5 text-secondary mb-1 mt-0">Commercial</h4>
+                <span class="h4 text-capitalize font-weight-bold text-dark">Yes</span>
             </div>
         </div>
     </div>
@@ -179,7 +179,7 @@
 {?description}
 <div class="mt-4 mb-4">
     <h3 class="text-dark font-weight-bold mb-4">Description</h3>
-    <div class="text-dark">{description|s}</div>
+    <div class="text-muted">{description|s}</div>
 </div>
 {/description}
 <div class="d-flex">
