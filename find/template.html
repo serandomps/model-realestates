@@ -1,26 +1,26 @@
 <div class="model-realestates-find">
     {?title}
     {?secondary}
-    <h3 class="title font-weight-bold mb-3">{title}</h3>
+    <h3 class="title text-dark font-weight-bold mb-3">{title}</h3>
     {:else}
-    <h1 class="title font-weight-bold mb-3">{title}</h1>
+    <h1 class="h2 title text-dark font-weight-bold mb-3">{title}</h1>
     {/secondary}{/title}
     {@slice context=realestates size="30"}
     <div class="row">
         {#.}
         <div class="col-lg-{size}">
-            <div class="thumbnail">
-                <div class="card mb-3">
+            <div class="thumbnail infinity">
+                <div class="card mb-4 mt-2">
                     <a href="{prefix}/{id}" {?external} target="_blank" {/external}>
-                    <img src="{_.images[0].x288}" class="card-img-top" alt="..."/>
+                    <img src="{_.images[0].x288}" class="card-img-top rounded-lg" alt="..."/>
                     </a>
                     <div class="card-body position-relative">
-                        <h3 class="card-title text-truncate text-muted">
+                        <h3 class="card-title text-truncate mt-1">
                             <a href="{prefix}/{id}" class="stretched-link text-dark font-weight-bold" {?external}
                                target="_blank" {/external}>{_.title|s}
                             </a>
                         </h3>
-                        <div class="d-flex text-muted mt-2">
+                        <div class="d-flex mt-1 mb-3 text-muted">
                             {?_.annex}
                             <div class="text-truncate mr-3">
                                 <i class="fas fa-bed fa-fw mr-1"></i>{bedrooms|numeral}
@@ -89,16 +89,17 @@
                             </div>
                             {/_.room}
                         </div>
-                        <div class="mt-3">
+                        <div class="mt-2">
                             <span class="h2 font-weight-bold text-success">{price|numeral}</span>
                             <small class="ml-1 text-muted">LKR</small>
                         </div>
-                        <div class="d-flex justify-content-between mt-3">
-                            <div class="text-muted">
-                                <i class="fas fa-clock fa-fw mr-1"></i>{createdAt|ago}
+                        <hr class="divider mt-2 mb-2"/>
+                        <div class="d-flex text-muted justify-content-between mt-2">
+                            <div class="text-muted text-truncate mr-2">
+                                <!--<i class="fas fa-map-marker fa-fw mr-1"></i>-->{_.city}
                             </div>
-                            <div class="text-muted text-truncate mr-1">
-                                <!--<i class="fas fa-map-marker-alt fa-fw mr-1"></i>-->{_.city}
+                            <div class="text-muted mr-2">
+                                <!--<i class="fas fa-clock fa-fw mr-1"></i>-->{createdAt|ago}
                             </div>
                         </div>
                     </div>
