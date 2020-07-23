@@ -9,49 +9,6 @@ var types = _.sortBy([
     {value: 'room', label: 'Room'}
 ], 'value');
 
-var sizes = [
-    {key: 'x288', size: '288x162'},
-    {key: 'x160', size: '160x160'},
-    {key: 'x800', size: '800x450'}
-];
-
-var cdn = function (items, done) {
-    items = items instanceof Array ? items : [items];
-    async.eachSeries(items, function (item, did) {
-        var images = item.images;
-        if (!images) {
-            return did();
-        }
-        var o = [];
-        var index = 0;
-        async.eachSeries(images, function (image, pushed) {
-            var entry = {
-                id: image,
-                index: index++
-            };
-            async.eachSeries(sizes, function (o, calculated) {
-                utils.cdn('images', '/images/' + o.size + '/' + image, function (err, url) {
-                    if (err) {
-                        return calculated(err);
-                    }
-                    entry[o.key] = url;
-                    calculated();
-                });
-            }, function (err) {
-                if (err) return pushed(err);
-                o.push(entry);
-                pushed();
-            });
-        }, function (err) {
-            if (err) {
-                return did(err);
-            }
-            item._.images = o;
-            did();
-        });
-    }, done);
-};
-
 var locations = function (realEstates, done) {
     realEstates.forEach(function (realEstate) {
         var tag = _.find(realEstate.tags, function (tag) {
@@ -100,7 +57,7 @@ var update = function (realEstates, options, done) {
         realEstate._[realEstate.type] = true;
         realEstate.description = (realEstate.description !== '<p><br></p>') ? realEstate.description : null;
     });
-    cdn(realEstates, function (err) {
+    utils.cdns(realEstates, function (err) {
         if (err) {
             return done(err);
         }
@@ -116,7 +73,7 @@ var update = function (realEstates, options, done) {
 exports.findOne = function (options, done) {
     $.ajax({
         method: 'GET',
-        url: utils.resolve('realestates:///apis/v/realestates/' + options.id),
+        url: utils.resolve('apis:///v/realestates/' + options.id),
         dataType: 'json',
         success: function (data) {
             update([data], options, function (err, realEstates) {
@@ -132,7 +89,7 @@ exports.findOne = function (options, done) {
 exports.find = function (options, done) {
     $.ajax({
         method: 'GET',
-        url: utils.resolve('realestates:///apis/v/realestates' + utils.toData(options.query)),
+        url: utils.resolve('apis:///v/realestates' + utils.toData(options.query)),
         dataType: 'json',
         success: function (data, status, xhr) {
             update(data, options, function (err, data) {
@@ -170,7 +127,7 @@ exports.find = function (options, done) {
 exports.remove = function (options, done) {
     $.ajax({
         method: 'DELETE',
-        url: utils.resolve('realestates:///apis/v/realestates/' + options.id),
+        url: utils.resolve('apis:///v/realestates/' + options.id),
         dataType: 'json',
         success: function (data) {
             done(null, data);
@@ -183,7 +140,7 @@ exports.remove = function (options, done) {
 
 exports.create = function (options, done) {
     $.ajax({
-        url: utils.resolve('realestates:///apis/v/realestates' + (options.id ? '/' + options.id : '')),
+        url: utils.resolve('apis:///v/realestates' + (options.id ? '/' + options.id : '')),
         type: options.id ? 'PUT' : 'POST',
         dataType: 'json',
         contentType: 'application/json',

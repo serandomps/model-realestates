@@ -326,7 +326,7 @@ var findContact = function (id, contact, done) {
 };
 
 var create = function (found, realEstate, location, contact, done) {
-    utils.create('realestates', 'realestates', RealEstates.create, found, realEstate, function (realEstate, action) {
+    utils.create('realestates', RealEstates.create, found, realEstate, function (realEstate, action) {
         return true
     }, function (err, data) {
         if (err) {

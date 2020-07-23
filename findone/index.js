@@ -99,7 +99,7 @@ module.exports = function (ctx, container, options, done) {
                                     redirect('/realestates/' + realEstate.id + '/edit');
                                     return false;
                                 }
-                                utils.transit('realestates', 'realestates', realEstate.id, action, function (err) {
+                                utils.transit('realestates', realEstate.id, action, function (err) {
                                     utils.loaded();
                                     if (err) {
                                         return console.error(err);
@@ -110,7 +110,7 @@ module.exports = function (ctx, container, options, done) {
                             });
                             elem.on('click', '.bumpup', function () {
                                 utils.loading();
-                                utils.bumpup('realestates', 'realestates', realEstate.id, function (err) {
+                                utils.bumpup('realestates', realEstate.id, function (err) {
                                     utils.loaded();
                                     if (err) {
                                         return console.error(err);
