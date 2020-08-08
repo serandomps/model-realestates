@@ -90,7 +90,8 @@ var prepare = function (o) {
     return o;
 };
 
-var render = function (ctx, container, paging, query, done) {
+
+var render = function (ctx, container, paging, query, page, done) {
     Vehicle.find({
         query: prepare(query),
         resolution: '288x162'
@@ -98,30 +99,67 @@ var render = function (ctx, container, paging, query, done) {
         if (err) {
             return done(err);
         }
-        var page = ++paging.total;
         var pageBox = $('<div class="model-realestates-search-page" data-page="' + page + '"></div>');
         find(ctx, {
             id: container.id,
             sandbox: pageBox
         }, {
-            prefix: utils.resolve('realestates:///realestates'),
+            prefix: paging.prefix,
             realestates: realestates,
             size: 4
         }, function (err, clean) {
             if (err) {
                 return done(err);
             }
-            container.sandbox.append(pageBox);
+            if (paging.active > page) {
+                container.sandbox.prepend(pageBox);
+            } else {
+                container.sandbox.append(pageBox);
+            }
+            paging.queries[page] = query;
+            utils.emit('footer', 'pages', paging.end, findActivePage(container));
             done(null, clean, links);
         });
+    });
+};
+
+var findActivePage = function (container) {
+    var page = $('.model-realestates-search-page', container.sandbox).mostVisible().data('page');
+    if (!page) {
+        return 0;
+    }
+    return parseInt(page, 10);
+};
+
+var findActiveQuery = function (paging) {
+    return paging.queries[paging.active];
+}
+
+var pushState = function (ctx, container, paging) {
+    var q = utils.toData(findActiveQuery(paging)) + '&page=' + paging.active;
+    utils.pushState(paging.prefix + q, $(document).find('title').text(), {
+        path: paging.path + q,
+        backed: true
     });
 };
 
 module.exports = function (ctx, container, options, done) {
     var loadable = options.loadable;
     var cleaners = [];
-    var paging = {total: 0};
-    render(ctx, container, paging, options.query, function (err, clean, links) {
+    var query = options.query;
+    var page = query.page ? parseInt(query.page, 10) : 1;
+    var q = query.data ? JSON.parse(query.data) : query;
+    var path = '/realestates';
+    var prefix = utils.resolve('realestates://' + path);
+    var paging = {
+        path: path,
+        prefix: prefix,
+        queries: {},
+        start: page,
+        end: page,
+        active: page
+    };
+    render(ctx, container, paging, q, page, function (err, clean, links) {
         if (err) {
             return done(err);
         }
@@ -130,42 +168,70 @@ module.exports = function (ctx, container, options, done) {
         }
         cleaners.push(clean);
 
-        var activePage = 0;
-
-        var findActivePage = function () {
-            return $('.model-realestates-search-page', container.sandbox).mostVisible().data('page');
-        };
+        paging.next = links.next;
+        paging.prev = links.prev;
 
         var scrolled = function (o) {
-            var active = findActivePage();
-            if (active === activePage) {
+            var active = findActivePage(container);
+            if (active === paging.active) {
                 return;
             }
-            activePage = active;
-            utils.emit('footer', 'pages', paging.total, findActivePage() || 1);
+            paging.active = active;
+            pushState(ctx, container, paging);
+            utils.emit('footer', 'pages', paging.end, active);
         };
 
         var scrolledDown = function () {
-            if (!links.next) {
+            if (paging.pending || !paging.next) {
                 return;
             }
-            render(ctx, container, paging, links.next.query, function (err, clean, linkz) {
+            paging.pending = true;
+            paging.end++;
+            render(ctx, container, paging, paging.next.query, paging.end, function (err, clean, linkz) {
                 if (err) {
                     return console.error(err);
                 }
-                utils.emit('footer', 'pages', paging.total, findActivePage() || 1);
+                paging.pending = false;
                 cleaners.push(clean);
-                links = linkz;
+                paging.next = linkz.next;
+                paging.prev = linkz.prev ? paging.prev : null;
             });
         };
 
-        //var url = '/realestates?' + utils.toQuery(links.prev.query);
-        //serand.redirect(url);
+        var scrollBuffer = function () {
+            if (!paging.prev) {
+                return;
+            }
+            setTimeout(function () {
+                $('html, body').animate({scrollTop: 100});
+            }, 0);
+        };
+
+        var scrolledUp = function () {
+            if (paging.pending || !paging.prev || paging.start === 1) {
+                return;
+            }
+
+            paging.pending = true;
+            paging.start--;
+            render(ctx, container, paging, paging.prev.query, paging.start, function (err, clean, linkz) {
+                if (err) {
+                    return console.error(err);
+                }
+                paging.pending = false;
+                cleaners.push(clean);
+                links = linkz;
+                paging.next = links.next ? paging.next : null;
+                paging.prev = links.prev;
+                scrollBuffer();
+            });
+        };
 
         done(null, {
             clean: function () {
                 utils.off('serand', 'scrolled', scrolled);
                 utils.off('serand', 'scrolled down', scrolledDown);
+                utils.off('serand', 'scrolled up', scrolledUp);
                 cleaners.forEach(function (clean) {
                     clean();
                 });
@@ -173,6 +239,14 @@ module.exports = function (ctx, container, options, done) {
             ready: function () {
                 utils.on('serand', 'scrolled', scrolled);
                 utils.on('serand', 'scrolled down', scrolledDown);
+                utils.on('serand', 'scrolled up', scrolledUp);
+                if (paging.end > 1) {
+                    utils.emit('footer', 'pages', paging.end, paging.active);
+                }
+                if (ctx.state.backed && !paging.backed) {
+                    paging.backed = true;
+                    scrollBuffer();
+                }
             }
         });
     });
