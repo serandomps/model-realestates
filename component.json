@@ -11,6 +11,7 @@
         "mine/index.js",
         "recent/index.js",
         "remove/index.js",
+        "report/index.js",
         "search/index.js",
         "service/index.js"
     ],
@@ -46,6 +47,7 @@
         "serandomps/model-locations": "master",
         "serandomps/model-contacts": "master",
         "serandomps/model-binaries": "master",
+        "serandomps/model-messages": "master",
         "serandomps/model-advertisements": "master"
     }
 }

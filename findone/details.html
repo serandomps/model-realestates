@@ -1,6 +1,6 @@
 <div class="d-none d-lg-flex mt-4">
     <div class="text-dark mr-5">
-        <h1 class="font-weight-bold title text-dark">{_.title|s}</h1>
+        <h1 class="font-weight-bold title text-dark">{_.title|s|js}</h1>
         <div class="text-muted d-flex">
             <div class="text-truncate mr-2">
                 <span class="mr-1">for <strong>{_.offer}</strong> by</span>
@@ -8,7 +8,7 @@
                    class="text-decoration-none text-primary">{_.user.username}</a>,
             </div>
             <div class="mr-2">
-                {?_.bumped} <i class="fas fa-angle-double-up text-warning mr-1"></i>{/_.bumped}{createdAt|ago},
+                {?_.bumped} <i class="fas fa-angle-double-up text-warning mr-1"></i>{/_.bumped}{updatedAt|ago},
             </div>
             <div class="mr-2">{_.city}</div>
         </div>
@@ -33,7 +33,7 @@
 </div>
 <div class="row text-muted d-lg-none mt-4">
     <div class="col-lg text-dark mr-3">
-        <h1 class="font-weight-bold title text-dark">{_.title|s}</h1>
+        <h1 class="font-weight-bold title text-dark">{_.title|s|js}</h1>
     </div>
     <div class="col-lg text-muted">
         <div class="text-truncate mt-2">
@@ -179,7 +179,7 @@
 {?description}
 <div class="mt-4 mb-4">
     <!--<h3 class="text-dark font-weight-bold mb-4">Description</h3>-->
-    <div class="text-muted">{description|s}</div>
+    <div class="text-muted">{description|s|js}</div>
 </div>
 {/description}
 <div class="d-flex">

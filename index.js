@@ -14,6 +14,8 @@ exports.recent = require('./recent');
 
 exports.remove = require('./remove');
 
+exports.report = require('./report');
+
 exports.search = require('./search');
 
 exports.service = require('./service');

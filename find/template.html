@@ -17,7 +17,7 @@
                     <div class="card-body position-relative">
                         <h3 class="card-title text-truncate mt-1">
                             <a href="{prefix}/{id}" class="stretched-link text-dark font-weight-bold" {?external}
-                               target="_blank" {/external}>{_.title|s}
+                               target="_blank" {/external}>{_.title|s|js}
                             </a>
                         </h3>
                         <div class="d-flex mt-1 mb-3 text-muted">
@@ -99,7 +99,7 @@
                                 <!--<i class="fas fa-map-marker fa-fw mr-1"></i>-->{_.city}
                             </div>
                             <div class="text-muted mr-2">
-                                <!--<i class="fas fa-clock fa-fw mr-1"></i>-->{createdAt|ago}
+                                <!--<i class="fas fa-clock fa-fw mr-1"></i>-->{updatedAt|ago}
                             </div>
                         </div>
                     </div>
