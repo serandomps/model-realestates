@@ -8,7 +8,8 @@ module.exports = function (ctx, container, options, done) {
             return done(err);
         }
         messages.create(ctx, container, {
-            about: realestate
+            about: realestate,
+            model: 'realestates'
         }, done);
     });
 };
