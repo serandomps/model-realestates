@@ -37,12 +37,12 @@
                              <span class="text-primary">{_.user.username}</span>
                          </div>-->
                         {/_.user}
-                        {@blocks block="select" id=_.container name="location-province" value=province options=_.provinces label="Province" size="10" icon="fas fa-landmark"/}
-                        {@blocks block="select" id=_.container name="location-district" value=districts options=_.districts label="District" size="10" icon="fas fa-archway"/}
-                        {@blocks block="select" id=_.container name="location-city" value=city options=_.cities label="City" size="10" icon="fas fa-city"/}
                         {@blocks block="select" id=_.container name="type" label="Type" value=type options=_.types size="10" icon="fas fa-tag"/}
                         {@blocks block="checkboxes" id=_.container name="offer" value=offer options=_.offer label="Offer" icon="fas fa-shopping-cart"/}
                         {@blocks block="checkboxes" id=_.container name="usage" value=usage options=_.usage label="Usage" icon="fas fa-building"/}
+                        {@blocks block="select" id=_.container name="location-province" value=province options=_.provinces label="Province" size="10" icon="fas fa-landmark"/}
+                        {@blocks block="select" id=_.container name="location-district" value=districts options=_.districts label="District" size="10" icon="fas fa-archway"/}
+                        {@blocks block="select" id=_.container name="location-city" value=city options=_.cities label="City" size="10" icon="fas fa-city"/}
                         <div class="form-group price">
                             <label class="title-text font-weight-bold"><i class="text-muted fas fa-money-check-alt mr-2"></i>Price</label>
                             {@blocks block="text" id=_.container name="price-gte" help="Min (LKR)"/}
