@@ -12,7 +12,7 @@ var types = _.sortBy([
 var locations = function (realEstates, done) {
     realEstates.forEach(function (realEstate) {
         var tag = _.find(realEstate.tags, function (tag) {
-            return tag.name === 'location:locations:city';
+            return tag.server && tag.group === 'location' && tag.name === 'city';
         });
         realEstate._.type = exports.type(realEstate.type);
         realEstate._.city = tag && tag.value;

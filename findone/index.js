@@ -1,6 +1,7 @@
 var dust = require('dust')();
 var serand = require('serand');
 var utils = require('utils');
+var watcher = require('watcher');
 var RealEstate = require('../service');
 var user = require('user');
 
@@ -152,14 +153,14 @@ module.exports = function (ctx, container, options, done) {
     });
 };
 
-utils.on('user', 'ready', function (tk) {
+watcher.on('user', 'ready', function (tk) {
     token = tk;
 });
 
-utils.on('user', 'logged in', function (tk) {
+watcher.on('user', 'logged in', function (tk) {
     token = tk;
 });
 
-utils.on('user', 'logged out', function (tk) {
+watcher.on('user', 'logged out', function (tk) {
     token = null;
 });

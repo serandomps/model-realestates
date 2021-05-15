@@ -40,6 +40,7 @@
     "dependencies": {
         "serandomps/serand": "master",
         "serandomps/utils": "master",
+        "serandomps/watcher": "master",
         "serandomps/dust": "master",
         "serandomps/user": "master",
         "serandomps/form": "master",
