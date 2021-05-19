@@ -22,7 +22,7 @@ var findQuery = function (vform, done) {
             if (errors) {
                 return vform.update(errors, data, done);
             }
-            to(data, function (err, data) {
+            toAPIQuery(data, function (err, data) {
                 if (err) {
                     return done(err);
                 }
@@ -49,7 +49,7 @@ var findCities = function (province, district, done) {
     done(null, Locations.allCities());
 };
 
-var to = function (o, done) {
+var toAPIQuery = function (o, done) {
     var query = {};
     if (o.user) {
         query.user = o.user;
@@ -125,32 +125,28 @@ var to = function (o, done) {
     }
     if (o['location-province']) {
         query.tags = query.tags || (query.tags = []);
-        query.tags.push({name: 'location:locations:province', value: o['location-province']});
+        query.tags.push({group: 'location', name: 'province', value: o['location-province']});
     }
     if (o['location-district']) {
         query.tags = query.tags || (query.tags = []);
-        query.tags.push({name: 'location:locations:district', value: o['location-district']});
+        query.tags.push({group: 'location', name: 'district', value: o['location-district']});
     }
     if (o['location-city']) {
         query.tags = query.tags || (query.tags = []);
-        query.tags.push({name: 'location:locations:city', value: o['location-city']});
+        query.tags.push({group: 'location', name: 'city', value: o['location-city']});
     }
     if (o['location-postal']) {
         query.tags = query.tags || (query.tags = []);
-        query.tags.push({name: 'location:locations:postal', value: o['location-postal']});
+        query.tags.push({group: 'location', name: 'postal', value: o['location-postal']});
     }
     done(null, query);
 };
 
-var from = function (query, done) {
+var fromURLQuery = function (query, done) {
     var o = {
         _: query._,
         user: query.user,
-        type: query.type || '',
-        'location-province': query['tags:location:province'],
-        'location-district': query['tags:location:district'],
-        'location-city': query['tags:location:city'],
-        'location-postal': query['tags:location:postal']
+        type: query.type || ''
     };
     if (query.residential) {
         o.usage = o.usage || [];
@@ -222,10 +218,10 @@ var from = function (query, done) {
     var tags = query.tags || [];
     tags.forEach(function (tag) {
         var name = tag.name;
-        if (name.indexOf('location:locations') === -1) {
+        if (tag.group !== 'location') {
             return;
         }
-        o['location-' + name.substring(19)] = tag.value;
+        o['location-' + name] = tag.value;
     });
     var key;
     var value;
@@ -882,7 +878,7 @@ module.exports = function (ctx, container, options, done) {
     var sandbox = container.sandbox;
     options = options || {};
 
-    from(_.cloneDeep(options.query) || {}, function (err, query) {
+    fromURLQuery(_.cloneDeep(options.query) || {}, function (err, query) {
         if (err) {
             return done(err);
         }
